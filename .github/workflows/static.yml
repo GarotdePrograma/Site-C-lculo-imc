@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULO DE IMC</title>
+</head>
+<style>
+    body{
+        margin: 0;
+    overflow-x: hidden;
+    
+        
+font-weight: bold;
+        display: flex;
+        
+        
+        
+        
+        background-color: aqua;
+    }
+
+    
+.div{
+    
+    margin-top: 1em;
+    
+    margin-bottom: 1em;
+    
+    background-color: #ffffff;
+    max-width: 50em;
+    margin: 5.0em auto;
+    padding: 3em 40px;
+    border-radius: 12px;
+    box-shadow: 0 0.4em 1.2em rgba(0,0,0,0.1);
+    text-align: left;
+     flex-direction: column;
+    
+}
+
+    
+
+.botao {
+    margin-top: 1em;
+    padding: 1em;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 0.6em;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: 0.07em solid rgb(202, 202, 202);
+}
+
+.botao:hover{
+     background-color: #2e2e2e;
+}
+
+
+.h2{    
+    
+    font-weight: bold;
+    color: #333;
+
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.form input:focus,
+.form textarea:focus {
+    border-color: #007BFF;
+    border-radius: 0.2em;
+    outline: none;
+}
+
+.result{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #333;
+    border-radius: 0.6em;
+    border: 0.15em solid rgb(202, 202, 202);
+    max-width: 4em;
+    display: flex;
+    font size: 0.4em
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+<body>
+    <div class="div">
+        <h1>Cálculo de IMC</h1>
+        <form class="form" >
+    <label class="tf">Digite seu peso em kg:</label>
+    <input type="number" id="number" class="number" class="tf">
+
+    <label class="tf">Digite sua altura em metros: </label>
+    <input type="number" id="number2" class="number" class="tf">
+   
+    <button type="button" onclick="calcular()" class="botao">Calcular</button>
+    
+
+    <h2 class="h2">IMC</h2> <h2 class="result" ><span  id="imc"></span></h2> 
+    <h2 class="h2">Resultado</h2 > <h2 class="result"><span id="resultado"></span></h2>
+       </form>
+    </div>
+
+    <script>
+        function calcular(){
+            
+            var peso =  parseFloat(document.getElementById("number").value) 
+            var altura = parseFloat(document.getElementById("number2").value)
+            
+          if(peso > 0 && altura > 0 && peso < 1000 && altura < 1000){
+          
+          
+            var imc = peso / (altura * altura )
+              
+              imc = imc.toFixed(2);
+
+            document.getElementById("imc").innerText = imc
+
+        if(imc < 21)
+        {
+            document.getElementById("resultado").innerText = "Magro"
+        }
+        else if(imc<25)
+        {
+            document.getElementById("resultado").innerText = "Normal"
+        }
+        else if(imc < 30)
+        {
+            document.getElementById("resultado").innerText = "Gordo"
+        }
+        else if(imc < 100)
+        {
+            document.getElementById("resultado").innerText = "Obeso"
+        }
+        else
+        {
+            document.getElementById("resultado").innerText = "Planeta"
+        }
+            
+        }
+            else{
+                alert("Nenhum dos números pode ser zero, negativo ou muito grande!")
+            }
+    }
+
+    </script>
+
+</body>
+</html>
